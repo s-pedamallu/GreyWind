@@ -10,5 +10,29 @@
   <%= @post.body %>
 </p>
 
+<h2>Comments</h2>
+<div id="comments">
+	<% @post.comments.each do |comment| %>
+		<%= div_for comment do %>
+		<ul>
+		<p>
+			<li><%= h(comment.body)%><br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;-<i>Posted <%= time_ago_in_words(comment.created_at)%> ago</i><br/></li>			
+		</p>
+		</ul>
+		<%end%>
+	<%end%>
+</div>
+
+<%= form_for([@post, Comment.new]) do |f|%>
+	<p>
+		<%= f.label :body, "New Comment" %><br/>
+		<%= f.text_area :body %>
+	</p>
+	<p>
+		<%= f.submit "Add Comment"%>
+	</p>
+<%end%>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

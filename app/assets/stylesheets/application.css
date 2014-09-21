@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+#content 
+{
+	position : fixed;
+	top : 20%;
+	right: 35%
+}
+#banner
+{
+	position : fixed;
+	top : 1%;
+	right : 1% 
+}
